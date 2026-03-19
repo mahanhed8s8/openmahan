@@ -1,0 +1,54 @@
+{
+  "name": "openmahan-vscode",
+  "displayName": "OpenMahan",
+  "description": "Chat with OpenMahan from inside VS Code.",
+  "version": "0.1.0",
+  "publisher": "mahan",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:openmahan.openChat"],
+  "main": "./extension.js",
+  "scripts": {
+    "vscode:prepublish": "echo nothing",
+    "test": "node ./extension.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "openmahan.openChat",
+        "title": "Open OpenMahan Chat",
+        "category": "OpenMahan"
+      }
+    ],
+    "configuration": {
+      "title": "OpenMahan",
+      "properties": {
+        "openMahanChat.url": {
+          "type": "string",
+          "default": "https://ollama.com/api/chat",
+          "description": "Base OpenMahan API URL (must include /api/chat if you supply a custom host)."
+        },
+        "openMahanChat.model": {
+          "type": "string",
+          "default": "gpt-oss:120b",
+          "description": "Model to request from Ollama (same naming as curl)."
+        },
+        "openMahanChat.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Optional Ollama API key for https://ollama.com"
+        },
+        "openMahanChat.timeout": {
+          "type": "number",
+          "default": 45,
+          "description": "Timeout in seconds for the Ollama request."
+        }
+      }
+    }
+  }
+}
